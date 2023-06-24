@@ -1,1 +1,18 @@
 /* You can add global styles to this file, and also import other style files */
+
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+.back{
+    border-radius: 32px;
+    padding: 5px 20px;
+    border: 1px solid black;
+    background-color: white;
+}
+.next{
+    border-radius: 32px;
+    padding: 5px 20px;
+    border: 1px solid black;
+    background-color: black;
+    color: white;
+    margin-left: 1em;
+}

@@ -1,0 +1,10 @@
+.text-red{
+    color: red;
+}
+a{
+    color: black;
+}
+
+::-webkit-input-placeholder { text-align:right; }
+input:-moz-placeholder { text-align:right; }
+

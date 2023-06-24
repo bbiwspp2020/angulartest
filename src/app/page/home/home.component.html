@@ -1,1 +1,169 @@
-<p>home works!</p>
+<div class="container">
+    <div class="row">
+        <div class="col-md-12 text-center">
+            <h1>Submit Tax Filing</h1>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-12 text-center">
+            1-2
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-12">
+            <div class="card p-5">
+                <div class="row">
+                    <div class="col-md-12">
+                        <h3>
+                            1. Tax Filing Detail
+                        </h3>
+                        <hr>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-12 mb-3">
+                        <span>
+                            Type of filing
+                        </span>
+                        <span class="text-red">*</span>
+                    </div>
+                    <div class="col-md-auto">
+                        <input type="radio" id="Ordinary" name="filingType" [value]="0" [(ngModel)]="filingType">
+                        <span>
+                            Ordinary Filing
+                        </span>
+                    </div>
+                    <div class="col-md-auto">
+                        <input type="radio" name="filingType" [value]="1" [(ngModel)]="filingType">
+                        <span>
+                            Additional filing
+                        </span>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-6 mt-5">
+                        <span>
+                            VAT Month
+                        </span>
+                        <span class="text-red">*</span>
+                    </div>
+                    <div class="col-md-6 mt-5" *ngIf="filingType == 1">
+                        <span>
+                            Type
+                        </span>
+                        <span class="text-red">*</span>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-3">
+                        <select class="form-select" [(ngModel)]="month">
+                            <option *ngFor="let i of months" value="{{i.value}}" [disabled]="i.status > checkMonth">
+                                {{i.month}}</option>
+                        </select>
+                    </div>
+                    <div class="col-md-3">
+                        <select class="form-select" [(ngModel)]="year">
+                            <option *ngFor="let i of years" value="{{i.year}}">{{i.year}}</option>
+                        </select>
+                    </div>
+                    <div class="col-md-3" *ngIf="filingType == 1">
+                        <select class="form-select">
+                            <option value="">On-time</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="flex-wrap col-md-12 mt-5 d-flex justify-content-between align-items-end">
+                        <h3>
+                            2. Tax Computation
+                        </h3>
+                        <a href="">View Exchange Rate</a>
+                    </div>
+                    <hr>
+                </div>
+                <div class="row">
+                    <div class="col-md-12 mb-3">
+                        <b>
+                            Provide total value taxable electronic service
+                        </b>
+                        <span class="text-red">*</span>
+                    </div>
+                </div>
+                <div class="row justify-content-between align-items-center mb-3">
+                    <div class="col-md-8">
+                        <span>
+                            1. Total value of taxable electronic servicer exclusive of VAT
+                        </span>
+                    </div>
+                    <div class="col-md-4">
+                        <input type="text" class="form-control" placeholder="THB" [(ngModel)]="saleAmount"
+                            oninput="this.value=this.value.replace(/[^0-9.]/g, '').replace(/\.[0-9]{3}/g, '.','')"
+                            (blur)="onBlur()" (focus)="onFocus()">
+                    </div>
+                </div>
+                <div class="row justify-content-between align-items-center">
+                    <div class="col-md-8">
+                        <span>
+                            2. Total VAT to be remited (7% of 1.)
+
+                        </span>
+                    </div>
+                    <div class="col-md-4">
+                        <input type="text" class="form-control" placeholder="THB" [(ngModel)]="taxAmount"
+                            oninput="this.value=this.value.replace(/[^0-9.]/g, '').replace(/\.[0-9]{3}/g, '.','')"
+                            (blur)="onBlurVAT()" (focus)="onFocusVAT()" (change)="check($event)">
+                    </div>
+                </div>
+                <ng-container *ngIf="filingType == 1">
+                    <div class="row">
+                        <div class="col-md-12 mt-5">
+                            <b>
+                                In case of late filing and payment, or additional filing
+                            </b>
+                        </div>
+                    </div>
+                    <div class="row justify-content-between align-items-center mt-3">
+                        <div class="col-md-8">
+                            <span>
+                                3. Surcharge
+                            </span>
+                        </div>
+                        <div class="col-md-4">
+                            <input type="text" class="form-control" placeholder="THB" disabled [(ngModel)]="surcharge">
+                        </div>
+                    </div>
+                    <div class="row justify-content-between align-items-center mt-3">
+                        <div class="col-md-8">
+                            <span>
+                                4. Penalty
+                            </span>
+                        </div>
+                        <div class="col-md-4">
+                            <input type="text" class="form-control" placeholder="THB" disabled [(ngModel)]="penalty">
+                        </div>
+                    </div>
+                    <div class="row justify-content-between align-items-center mt-3">
+                        <div class="col-md-8">
+                            <span>
+                                5. Total amount of VAT, surcharge, anf Penalty to be remittext <br>
+                                (2. + 3. + 4.)
+                            </span>
+                        </div>
+                        <div class="col-md-4">
+                            <input type="text" class="form-control" placeholder="THB" disabled
+                                [(ngModel)]="totalAmount">
+                        </div>
+                    </div>
+                </ng-container>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-12 mb-5 mt-3">
+            <button class="back" (click)="back()">Back</button>
+            <button class="next" (click)="next()">Next</button>
+        </div>
+    </div>
+
+
+</div>

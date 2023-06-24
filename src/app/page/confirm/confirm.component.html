@@ -1,0 +1,120 @@
+<div class="container">
+    <div class="row">
+        <div class="col-md-12 text-center">
+            <h1>Submit Tax Filing</h1>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-12 text-center">
+            1-2
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-12">
+            <div class="card p-5">
+                <div class="row">
+                    <div class="col-md-12">
+                        <h3>
+                            Tax Filing Detail
+                        </h3>
+                        <hr>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-3 mb-3">
+                        <span>
+                            Type of filing
+                        </span>
+                    </div>
+                    <div class="col-md-9 mb-3">
+                        <span>{{taxData.filingType == 0 ? 'Ordinary Filing' : 'Additional filing'}}</span>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-3 mb-3">
+                        <span>
+                            VAT Month
+                        </span>
+                    </div>
+                    <div class="col-md-9 mb-3">
+                        <ng-container *ngFor="let i of months">
+                            <span *ngIf="i.value == taxData.month">{{i.month}} {{ taxData.year}}</span>
+                        </ng-container>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-12 mt-5 ">
+                        <h3>
+                            Tax Computation
+                        </h3>
+                    </div>
+                    <hr>
+                </div>
+                <div class="row justify-content-between align-items-center mb-3">
+                    <div class="col-md-8">
+                        <b>
+                            Total value of taxable electronic servicer exclusive of VAT
+                        </b>
+                    </div>
+                    <div class="col-md-4 text-end">
+                        {{taxData.saleAmount }} &nbsp;{{'THB'}}
+                    </div>
+                </div>
+                <div class="row justify-content-between align-items-center">
+                    <div class="col-md-8">
+                        <b>
+                            Total VAT to be remited
+                        </b>
+                        <p>
+                            ( 7% of Total value of taxable electronic exclusive of VAT)
+                        </p>
+                    </div>
+    
+                    <div class="col-md-4 text-end">
+                        {{taxData.taxAmount }} &nbsp; {{'THB'}}
+                    </div>
+                </div>
+                <div class="row justify-content-between align-items-center">
+                    <div class="col-md-8">
+                        <b>
+                            Total Amount Payable
+                        </b>
+                    </div>
+    
+                    <div class="col-md-4 text-end">
+                        <b>
+                            {{taxData.totalAmount }} &nbsp; {{'THB'}}
+                        </b>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-12 mt-4 text-center">
+            <button class="next"  data-bs-toggle="modal" data-bs-target="#staticBackdrop">
+                Confirm and Submit
+            </button>
+        </div>
+    </div>
+    
+</div>
+
+  
+  <!-- Modal -->
+  <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-lg">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h1 class="modal-title fs-5" id="staticBackdropLabel">Modal title</h1>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          {{taxData | json}}
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" (click)="submit()">Close</button>
+        </div>
+      </div>
+    </div>
+  </div>
