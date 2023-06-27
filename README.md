@@ -1,10 +1,10 @@
 # AngularTest
 
-step 1 __
+step 1 <br />
 git clone `https://github.com/bbiwspp2020/angulartest.git`
 
-step 2 __
+step 2 <br />
 npm install
 
-step 3 __
+step 3 <br />
 ng serve
