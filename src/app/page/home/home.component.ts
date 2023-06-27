@@ -94,6 +94,9 @@ export class HomeComponent implements OnInit {
     if (Number(this.taxAmount) > 0) {
       this.taxAmount = this.taxAmount.replace(/\B(?=(\d{3})+(?!\d))/g, ',');
     }
+    let data = Number(this.taxAmount)
+      let sum = Number(this.taxAmount.replace(/[^0-9.]/g, '')) + Number(this.surcharge.replace(/[^0-9.]/g, '')) + Number(this.penalty.replace(/[^0-9.]/g, ''))
+    this.totalAmount = sum.toFixed(2).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',')
   }
 
   check(e: any) {

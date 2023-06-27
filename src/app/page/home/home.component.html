@@ -5,8 +5,15 @@
         </div>
     </div>
     <div class="row">
-        <div class="col-md-12 text-center">
-            1-2
+        <div class="col-md-12 mb-4 text-center d-flex justify-content-center">
+                <div class="circle">1</div>
+                <hr style="border: 2px solid; width: 100px; opacity: 0.5;">
+                <div class="circle" style="opacity: 0.5;">2</div>
+        </div>
+        <div class="col-md-12 mb-4 text-center d-flex justify-content-center">
+                <div class="text-center">Input Detail</div>
+                <div style="width: 70px;"></div>
+                <div class="text-center">Review & Confirm</div>
         </div>
     </div>
     <div class="row">
@@ -96,7 +103,7 @@
                         </span>
                     </div>
                     <div class="col-md-4">
-                        <input type="text" class="form-control" placeholder="THB" [(ngModel)]="saleAmount"
+                        <input type="text" class="form-control input-rigth" placeholder="THB" [(ngModel)]="saleAmount"
                             oninput="this.value=this.value.replace(/[^0-9.]/g, '').replace(/\.[0-9]{3}/g, '.','')"
                             (blur)="onBlur()" (focus)="onFocus()">
                     </div>
@@ -105,11 +112,10 @@
                     <div class="col-md-8">
                         <span>
                             2. Total VAT to be remited (7% of 1.)
-
                         </span>
                     </div>
                     <div class="col-md-4">
-                        <input type="text" class="form-control" placeholder="THB" [(ngModel)]="taxAmount"
+                        <input type="text" class="form-control input-rigth" placeholder="THB" [(ngModel)]="taxAmount"
                             oninput="this.value=this.value.replace(/[^0-9.]/g, '').replace(/\.[0-9]{3}/g, '.','')"
                             (blur)="onBlurVAT()" (focus)="onFocusVAT()" (change)="check($event)">
                     </div>
@@ -129,7 +135,8 @@
                             </span>
                         </div>
                         <div class="col-md-4">
-                            <input type="text" class="form-control" placeholder="THB" disabled [(ngModel)]="surcharge">
+                            <input type="text" class="form-control input-rigth" placeholder="THB" disabled
+                                [(ngModel)]="surcharge">
                         </div>
                     </div>
                     <div class="row justify-content-between align-items-center mt-3">
@@ -139,18 +146,19 @@
                             </span>
                         </div>
                         <div class="col-md-4">
-                            <input type="text" class="form-control" placeholder="THB" disabled [(ngModel)]="penalty">
+                            <input type="text" class="form-control input-rigth" placeholder="THB" disabled
+                                [(ngModel)]="penalty">
                         </div>
                     </div>
                     <div class="row justify-content-between align-items-center mt-3">
                         <div class="col-md-8">
                             <span>
-                                5. Total amount of VAT, surcharge, anf Penalty to be remittext <br>
+                                5. Total amount of VAT, surcharge, and Penalty to be remittext <br>
                                 (2. + 3. + 4.)
                             </span>
                         </div>
                         <div class="col-md-4">
-                            <input type="text" class="form-control" placeholder="THB" disabled
+                            <input type="text" class="form-control input-rigth" placeholder="THB" disabled
                                 [(ngModel)]="totalAmount">
                         </div>
                     </div>
